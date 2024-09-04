@@ -48,20 +48,18 @@ namespace UrlShortner.Repositories
                 throw new ArgumentException("Short URL cannot be empty.", nameof(shortUrl));
             }
 
-            // Log the actual value being queried
-            Console.WriteLine($"Querying for shortUrl: '{shortUrl}'");
+            Console.WriteLine($"Querying for shortUrl: '{shortUrl}'"); //test delete later
 
             var urlMapping = await _context.urlMappings
                 .FirstOrDefaultAsync(a => a.ShortUrl == shortUrl);
 
-            // Log the result of the query
             if (urlMapping == null)
             {
                 Console.WriteLine("No URL mapping found.");
                 return null;
             }
 
-            Console.WriteLine($"Found URL mapping: OriginalUrl = '{urlMapping.OriginalUrl}'");
+            Console.WriteLine($"Found URL mapping: OriginalUrl = '{urlMapping.OriginalUrl}'"); //test delete later
             return urlMapping.OriginalUrl;
         }
 
